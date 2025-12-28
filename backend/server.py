@@ -19,8 +19,12 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Radio Browser API base URL
-RADIO_BROWSER_API = "https://de1.api.radio-browser.info/json"
+# Radio Browser API base URLs (multiple servers for fallback)
+RADIO_BROWSER_SERVERS = [
+    "https://nl1.api.radio-browser.info/json",
+    "https://at1.api.radio-browser.info/json",
+    "https://de1.api.radio-browser.info/json"
+]
 
 # Create the main app without a prefix
 app = FastAPI()
