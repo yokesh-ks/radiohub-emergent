@@ -158,6 +158,18 @@ async def get_countries(limit: int = Query(50, le=200)):
     countries = await fetch_radio_api("countries", params)
     return {"countries": countries, "count": len(countries)}
 
+@api_router.get("/languages")
+async def get_languages(limit: int = Query(50, le=200)):
+    params = {"limit": limit, "order": "stationcount", "reverse": "true"}
+    languages = await fetch_radio_api("languages", params)
+    return {"languages": languages, "count": len(languages)}
+
+@api_router.get("/stations/bylanguage/{language}")
+async def get_stations_by_language(language: str, limit: int = Query(50, le=100)):
+    params = {"limit": limit, "order": "votes", "reverse": "true", "hidebroken": "true"}
+    stations = await fetch_radio_api(f"stations/bylanguage/{language}", params)
+    return {"stations": stations, "count": len(stations)}
+
 @api_router.post("/stations/{stationuuid}/click")
 async def record_click(stationuuid: str):
     """Record a click/play event for analytics"""
