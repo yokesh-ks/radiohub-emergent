@@ -21,9 +21,9 @@ db = client[os.environ['DB_NAME']]
 
 # Radio Browser API base URLs (multiple servers for fallback)
 RADIO_BROWSER_SERVERS = [
-    "https://nl1.api.radio-browser.info/json",
-    "https://at1.api.radio-browser.info/json",
-    "https://de1.api.radio-browser.info/json"
+    "https://de2.api.radio-browser.info/json",
+    "https://fi1.api.radio-browser.info/json",
+    "https://all.api.radio-browser.info/json"
 ]
 
 # Create the main app without a prefix
