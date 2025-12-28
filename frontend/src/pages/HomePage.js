@@ -199,7 +199,7 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-testid="language-cards-grid">
             {FEATURED_LANGUAGES.map((lang, i) => (
-              <LanguageCard key={lang.name} language={lang.name} image={lang.image} index={i} />
+              <LanguageCard key={lang} language={lang} index={i} />
             ))}
           </div>
         </div>
