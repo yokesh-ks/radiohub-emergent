@@ -61,22 +61,26 @@ class Country(BaseModel):
     stationcount: int
     iso_3166_1: str = ""
 
-# Helper function to fetch from Radio Browser API
+# Helper function to fetch from Radio Browser API with fallback
 async def fetch_radio_api(endpoint: str, params: dict = None):
     async with httpx.AsyncClient() as client:
-        try:
-            headers = {"User-Agent": "RadioDirectoryApp/1.0"}
-            response = await client.get(
-                f"{RADIO_BROWSER_API}/{endpoint}",
-                params=params,
-                headers=headers,
-                timeout=15.0
-            )
-            response.raise_for_status()
-            return response.json()
-        except httpx.HTTPError as e:
-            logging.error(f"Radio Browser API error: {e}")
-            raise HTTPException(status_code=502, detail="Failed to fetch from Radio Browser API")
+        headers = {"User-Agent": "RadioDirectoryApp/1.0"}
+        
+        for server in RADIO_BROWSER_SERVERS:
+            try:
+                response = await client.get(
+                    f"{server}/{endpoint}",
+                    params=params,
+                    headers=headers,
+                    timeout=10.0
+                )
+                response.raise_for_status()
+                return response.json()
+            except httpx.HTTPError as e:
+                logging.warning(f"Radio Browser API error on {server}: {e}")
+                continue
+        
+        raise HTTPException(status_code=502, detail="Failed to fetch from Radio Browser API")
 
 # Routes
 @api_router.get("/")
