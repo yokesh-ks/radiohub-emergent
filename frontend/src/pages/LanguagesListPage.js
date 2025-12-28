@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Languages, ArrowLeft, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import LanguageCard from '../components/LanguageCard';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -14,7 +15,11 @@ const LanguagesListPage = () => {
     const fetchLanguages = async () => {
       try {
         const response = await axios.get(`${API}/languages`, { params: { limit: 100 } });
-        setLanguages(response.data.languages || []);
+        // Filter to get languages that have station count > 100 for better UX
+        const filteredLanguages = (response.data.languages || [])
+          .filter(lang => lang.stationcount > 50)
+          .slice(0, 30);
+        setLanguages(filteredLanguages);
       } catch (error) {
         console.error('Failed to fetch languages:', error);
       } finally {
@@ -49,30 +54,20 @@ const LanguagesListPage = () => {
           </div>
         </motion.div>
 
-        {/* Languages */}
+        {/* Languages Grid */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
         ) : (
-          <div className="flex flex-wrap gap-3" data-testid="all-languages-list">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-testid="all-languages-grid">
             {languages.map((lang, i) => (
-              <Link
-                key={lang.name}
-                to={`/language/${encodeURIComponent(lang.name)}`}
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.01 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-card px-4 py-2 rounded-full text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 capitalize"
-                  data-testid={`language-item-${lang.name.replace(/\s+/g, '-').toLowerCase()}`}
-                >
-                  {lang.name}
-                  <span className="ml-2 text-xs text-muted-foreground">{lang.stationcount}</span>
-                </motion.div>
-              </Link>
+              <LanguageCard 
+                key={lang.name} 
+                language={lang.name} 
+                index={i}
+                stationCount={lang.stationcount}
+              />
             ))}
           </div>
         )}
