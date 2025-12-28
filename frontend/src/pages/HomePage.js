@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Award, Music, Globe, ArrowRight, Loader2 } from 'lucide-react';
+import { TrendingUp, Award, Music, Languages, ArrowRight, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import StationCard from '../components/StationCard';
 import SearchInput from '../components/SearchInput';
 import GenreCard from '../components/GenreCard';
+import LanguageCard from '../components/LanguageCard';
 import { Button } from '../components/ui/button';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
@@ -24,6 +25,20 @@ const FEATURED_GENRES = [
   { name: 'country', image: 'https://images.pexels.com/photos/1154182/pexels-photo-1154182.jpeg' },
   { name: 'latin', image: 'https://images.unsplash.com/photo-1585873587499-4c2b179c6c51?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxsYXRpbiUyMHNhbHNhJTIwZGFuY2UlMjBjb2xvcmZ1bHxlbnwwfHx8fDE3NjY5MTc5NjR8MA&ixlib=rb-4.1.0&q=85' },
   { name: 'metal', image: 'https://images.unsplash.com/photo-1542577731-7f6eabdf59ef?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxoZWF2eSUyMG1ldGFsJTIwY29uY2VydCUyMGRhcmt8ZW58MHx8fHwxNzY2OTE3OTcyfDA&ixlib=rb-4.1.0&q=85' },
+];
+
+// Language data with illustrations
+const FEATURED_LANGUAGES = [
+  { name: 'english', image: 'https://images.pexels.com/photos/2725634/pexels-photo-2725634.jpeg' },
+  { name: 'spanish', image: 'https://images.pexels.com/photos/29864855/pexels-photo-29864855.jpeg' },
+  { name: 'german', image: 'https://images.pexels.com/photos/109629/pexels-photo-109629.jpeg' },
+  { name: 'french', image: 'https://images.unsplash.com/photo-1730995971969-6a17ab5885e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxmcmFuY2UlMjBwYXJpcyUyMGVpZmZlbCUyMHRvd2VyfGVufDB8fHx8MTc2NjkxODM4Nnww&ixlib=rb-4.1.0&q=85' },
+  { name: 'portuguese', image: 'https://images.pexels.com/photos/8880071/pexels-photo-8880071.jpeg' },
+  { name: 'russian', image: 'https://images.pexels.com/photos/2887633/pexels-photo-2887633.jpeg' },
+  { name: 'japanese', image: 'https://images.pexels.com/photos/7210062/pexels-photo-7210062.jpeg' },
+  { name: 'hindi', image: 'https://images.pexels.com/photos/34453343/pexels-photo-34453343.jpeg' },
+  { name: 'arabic', image: 'https://images.pexels.com/photos/6118470/pexels-photo-6118470.jpeg' },
+  { name: 'chinese', image: 'https://images.pexels.com/photos/4445240/pexels-photo-4445240.jpeg' },
 ];
 
 const HomePage = () => {
