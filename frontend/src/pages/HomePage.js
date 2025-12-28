@@ -29,16 +29,8 @@ const FEATURED_GENRES = [
 
 // Language data with illustrations
 const FEATURED_LANGUAGES = [
-  { name: 'english', image: 'https://images.pexels.com/photos/2725634/pexels-photo-2725634.jpeg' },
-  { name: 'spanish', image: 'https://images.pexels.com/photos/29864855/pexels-photo-29864855.jpeg' },
-  { name: 'german', image: 'https://images.pexels.com/photos/109629/pexels-photo-109629.jpeg' },
-  { name: 'french', image: 'https://images.unsplash.com/photo-1730995971969-6a17ab5885e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxmcmFuY2UlMjBwYXJpcyUyMGVpZmZlbCUyMHRvd2VyfGVufDB8fHx8MTc2NjkxODM4Nnww&ixlib=rb-4.1.0&q=85' },
-  { name: 'portuguese', image: 'https://images.pexels.com/photos/8880071/pexels-photo-8880071.jpeg' },
-  { name: 'russian', image: 'https://images.pexels.com/photos/2887633/pexels-photo-2887633.jpeg' },
-  { name: 'japanese', image: 'https://images.pexels.com/photos/7210062/pexels-photo-7210062.jpeg' },
-  { name: 'hindi', image: 'https://images.pexels.com/photos/34453343/pexels-photo-34453343.jpeg' },
-  { name: 'arabic', image: 'https://images.pexels.com/photos/6118470/pexels-photo-6118470.jpeg' },
-  { name: 'chinese', image: 'https://images.pexels.com/photos/4445240/pexels-photo-4445240.jpeg' },
+  'english', 'spanish', 'german', 'french', 'portuguese', 
+  'russian', 'japanese', 'hindi', 'arabic', 'chinese'
 ];
 
 const HomePage = () => {
