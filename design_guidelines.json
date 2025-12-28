@@ -1,0 +1,143 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "E1_Radio_Architect",
+      "archetype": "Electric & Neon (Archetype 2)",
+      "core_philosophy": "Fusion over Imitation. Every pixel must vibrate.",
+      "vibe": "Void Black, Acid Lime, Deep Indigo. A radio station broadcasting from 2077."
+    },
+    "typography": {
+      "fonts": {
+        "heading": {
+          "name": "Clash Display",
+          "weights": ["500", "600", "700"],
+          "source": "https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap",
+          "usage": "All headings (h1-h6), big stats, hero text. CRITICAL: Use tracking-tight."
+        },
+        "body": {
+          "name": "Manrope",
+          "weights": ["400", "500", "700"],
+          "source": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap",
+          "usage": "Paragraphs, UI labels, inputs, metadata."
+        }
+      },
+      "rules": [
+        "Headings > 32px must use tracking-tight (-0.02em).",
+        "Overlines (small labels) must be uppercase, tracking-widest (0.2em), and text-xs.",
+        "Never use Inter. If Clash Display fails, fallback to generic sans-serif but cry about it."
+      ]
+    },
+    "colors": {
+      "palette": {
+        "base": {
+          "background": "240 10% 3.9%",
+          "foreground": "0 0% 98%"
+        },
+        "primary": {
+          "DEFAULT": "84 81% 65%",
+          "foreground": "240 10% 3.9%",
+          "description": "Acid Lime - Use for Play buttons, Primary CTAs, Active States."
+        },
+        "secondary": {
+          "DEFAULT": "260 100% 65%",
+          "foreground": "0 0% 98%",
+          "description": "Electric Purple - Use for gradients, accents, visualizers."
+        },
+        "muted": {
+          "DEFAULT": "240 5% 15%",
+          "foreground": "240 5% 65%"
+        },
+        "card": {
+          "DEFAULT": "240 10% 6%",
+          "foreground": "0 0% 98%"
+        },
+        "border": "240 5% 20%"
+      },
+      "gradients": {
+        "hero_glow": "radial-gradient(circle at 50% 50%, rgba(132, 204, 22, 0.15) 0%, rgba(0, 0, 0, 0) 70%)",
+        "player_glass": "linear-gradient(180deg, rgba(20, 20, 25, 0.7) 0%, rgba(10, 10, 12, 0.9) 100%)"
+      }
+    },
+    "layout": {
+      "spacing_scale": "Generous. Use p-8, p-12, p-16. Avoid cramped p-4.",
+      "grid_system": {
+        "browse_page": "Bento Grid Mode A (Tetris). Mix col-span-2, col-span-4, row-span-2.",
+        "search_results": "Grid cols-1 md:cols-2 lg:cols-3 gap-6.",
+        "player_bar": "Fixed bottom, h-24, z-50, full width."
+      },
+      "border_radius": {
+        "default": "0.75rem",
+        "card": "1rem",
+        "button": "9999px"
+      }
+    },
+    "components": {
+      "station_card": {
+        "style": "Glassmorphism (Crystal). bg-white/5 (dark mode). Border: 1px solid white/10.",
+        "hover": "Scale 1.02, Border color -> Primary (Acid Lime), Shadow-lg.",
+        "content": "Image top (aspect-square), Title (truncate), Country/Genre (muted small)."
+      },
+      "player_bar": {
+        "style": "Glassmorphism with 'Tracing Beam' top border. Backdrop-blur-xl.",
+        "elements": "Play/Pause (Huge, Primary Color), Volume (Slider), Current Track (Marquee)."
+      },
+      "search_input": {
+        "style": "Massive. text-2xl or 3xl. Transparent bg, bottom border only (or minimal pill).",
+        "placeholder": "Search the globe..."
+      },
+      "visual_enhancers": {
+        "noise_overlay": "Add a fixed, pointer-events-none div with noise texture at 3% opacity over the whole app.",
+        "glow_blobs": "Use absolute positioned divs with blur-3xl and primary/secondary colors behind key sections."
+      }
+    },
+    "motion": {
+      "library": "framer-motion",
+      "transitions": {
+        "default": "type: spring, stiffness: 300, damping: 30",
+        "page_load": "opacity: 0 -> 1, y: 20 -> 0",
+        "hover": "scale: 1.05"
+      },
+      "scroll": "Use 'lenis' for smooth scrolling. Mandatory."
+    },
+    "assets": {
+      "icons": "lucide-react (default). Use thin strokes (1.5px).",
+      "images": {
+        "hero_visualizer": "https://images.unsplash.com/photo-1746470320759-6f4bbf44ebe8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMG5lb24lMjBzb3VuZHdhdmUlMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjY5MTE2MjV8MA&ixlib=rb-4.1.0&q=85",
+        "genre_covers": [
+          {
+            "category": "Electronic/Cyber",
+            "url": "https://images.unsplash.com/photo-1631208298935-ff6d844c4771?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxjeWJlcnB1bmslMjBjaXR5JTIwbmlnaHQlMjByYWluJTIwbmVvbnxlbnwwfHx8fDE3NjY5MTE2Mjl8MA&ixlib=rb-4.1.0&q=85"
+          },
+          {
+            "category": "Jazz/Classic",
+            "url": "https://images.unsplash.com/photo-1765672175920-3b1669389a05?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxyZXRybyUyMHJhZGlvJTIwc3R1ZGlvJTIwbWljcm9waG9uZSUyMGFlc3RoZXRpY3xlbnwwfHx8fDE3NjY5MTE2Mjd8MA&ixlib=rb-4.1.0&q=85"
+          },
+          {
+            "category": "Abstract/Vibe",
+            "url": "https://images.unsplash.com/photo-1759771963975-8a4885446f1f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBzb3VuZHdhdmUlMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjY5MTE2MjV8MA&ixlib=rb-4.1.0&q=85"
+          }
+        ],
+        "placeholders": {
+          "station_logo": "https://images.unsplash.com/photo-1669479412055-103edfb64cc4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMG5lb24lMjBzb3VuZHdhdmUlMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjY5MTE2MjV8MA&ixlib=rb-4.1.0&q=85"
+        }
+      }
+    },
+    "instructions_to_main_agent": [
+      "1. INSTALL FONTS FIRST: Add the <link> tags for Clash Display and Manrope to index.html immediately.",
+      "2. UPDATE TAILWIND: Modify tailwind.config.js to include the new colors (acid lime, electric purple) and fonts.",
+      "3. CSS VARIABLES: Update index.css with the HSL values provided in 'colors.palette'.",
+      "4. LAYOUT: Build the 'Bento Grid' for the home page. Do not use a simple list.",
+      "5. PLAYER: The player must be persistent. Use a Context Provider (PlayerContext) to manage state across pages.",
+      "6. NOISE: Add the noise texture overlay. It is the secret sauce.",
+      "7. DATA-TESTID: Add data-testid to every interactive element (play button, search input, station card).",
+      "8. THEME: Force Dark Mode. This app does not have a light mode. It lives in the dark."
+    ],
+    "universal_guidelines": [
+      "Avoid generic 'AI slop' designs.",
+      "Use 2-3x more spacing than comfortable.",
+      "Every interaction needs a micro-animation.",
+      "Never use transparent backgrounds without blur.",
+      "Use 'sonner' for toasts."
+    ]
+  }
+}
